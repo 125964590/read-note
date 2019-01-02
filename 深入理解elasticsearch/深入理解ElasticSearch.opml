@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+<head>
+<title>深入理解ElasticSearch</title>
+</head>
+<body>
+<outline text="深入理解ElasticSearch"><outline text="第一章" _note="ElasticSearch简介&#10;&#10;本章主要介绍es的使用原理以及运行方式"><outline text="es的概念"><outline text="分片"></outline>
+<outline text="副本"></outline>
+<outline text="文档"></outline>
+<outline text="映射"></outline>
+<outline text="类型"></outline>
+<outline text="索引"></outline>
+<outline text="节点"></outline>
+<outline text="集群"></outline>
+</outline>
+<outline text="工作流程"><outline text="Es之间的通信"></outline>
+<outline text="启动流程"></outline>
+<outline text="故障检测"></outline>
+</outline>
+</outline>
+<outline text="第二章" _note="查询DSL进阶&#10;&#10;本章主要介绍es的几种查询操作,并且简单讲述在各种情况下应该使用的查询命令"><outline text="lucene评分公式"><outline text="TF/IDF"><outline text="实际公式"></outline>
+<outline text="理论公式"></outline>
+</outline>
+</outline>
+<outline text="正确选择查询方式"><outline text="实际使用"></outline>
+<outline text="查询方式分类"><outline text="位置敏感查询" _note="特别强调下位置敏感指的是词与词之间的位置"></outline>
+<outline text="全文检索查询"></outline>
+<outline text="基本查询"></outline>
+<outline text="打分查询"></outline>
+<outline text="无分析查询"></outline>
+<outline text="模式匹配查询"></outline>
+<outline text="相似度查询"></outline>
+<outline text="组合查询"></outline>
+<outline text="结构敏感查询"></outline>
+</outline>
+</outline>
+<outline text="过滤器的使用" _note="过滤器包括前置中置和后置过滤器,简而言之过滤器就是对搜索的结果或者是目标的文档进行过滤,而且过滤的内容是不会计算评分的"><outline text="使用场景"></outline>
+<outline text="工作原理"></outline>
+</outline>
+</outline>
+<outline text="第三章" _note="不只是文本搜索"><outline text="多匹配控制(multi_match)" _note="顾名思义多匹配值得就是在查询的时候可以使用多个字段进行匹配,并且可以这是相应的参数得到我们想要的结果."><outline text="best_fields"></outline>
+<outline text="cross_fields"></outline>
+<outline text="most_fields"></outline>
+<outline text="phrase"></outline>
+<outline text="phrase with prefixes"></outline>
+</outline>
+<outline text="文档关系" _note="对es的文档关系进行了简单的描述,介绍了es的几种文档结构,并且介绍了es对于文档的理解和自己的利弊."><outline text="parent-child关系" _note="Parent-child相比较于nested类型而言最大的又是就是在于parent和child的文档是分开索引的,各自有独立的索引,这么做的代价就是查询的效率会被降低"></outline>
+<outline text="对象类型(object)"></outline>
+<outline text="嵌套类型(nested)"></outline>
+</outline>
+<outline text="文档分组(top_hits)"></outline>
+<outline text="查询二次评分" _note="二次评分是对第一次查询的结果进行二次查询,并且可以控制返回的最终结果,在实际业务中二次查询很重要,因为他可以帮助我们的到实际想要的数据."><outline text="原理"></outline>
+<outline text="结构"></outline>
+<outline text="评分模式的选择"></outline>
+</outline>
+<outline text="脚本的使用"><outline text="groovy脚本语言"></outline>
+<outline text="全文检索中使用"></outline>
+<outline text="语法标准"></outline>
+</outline>
+<outline text="重要词项聚合(significant_terms)" _note="用来对给定内容中出现次数最多的内容进行聚合,并且可以进行嵌套聚合"><outline text="使用限制"></outline>
+<outline text="全问重要字段搜索"></outline>
+<outline text="嵌套聚合"></outline>
+<outline text="数据控制"></outline>
+<outline text="相关调优参数"></outline>
+</outline>
+</outline>
+<outline text="第四章" _note="改善用户的搜索体验&#10;&#10;本章主要介绍了通关为查询增加更多的限定条件,来优化我们的查询结果,将更加满足业务需求的查询结果返回给用户"><outline text="改善相关性"><outline text="1. 标准查询" _note="如果我们使用的字段相对全文而言不是那么重要那我们就尽量不要使用标准查询"></outline>
+<outline text="2. 多匹配查询" _note="相对于全文的匹配而言,多字段查询可以更加精准的 找到我们想要的内容,并且在查询的时候可以指定不同字段的权重."></outline>
+<outline text="3. 引入短语查询" _note="短语查询可以帮助我们修正想要的结果,通常的做法是使用布尔查询来连接短语查询以及多字段匹配,或者是根据我们需要的不同场景进行不同的匹配"><outline text="match_phrase" _note="使用match_phrase查询的时候,我们可以指定短语之间的最大间隔数:&#10;添加slop参数ΩΩΩ"></outline>
+</outline>
+<outline text="4. 扔掉垃圾信息" _note="在查询的时候我们可以通过添加过滤器来排除我们不想要的内容,同事使用filter还可以增加查询的速度,并且可以使用缓存"></outline>
+<outline text="5. 为指定的内容提升权重" _note="如果我们想要提高指定查询短语匹配,或者是match_phrase查询的得分就可以通过设置权重来提高"></outline>
+<outline text="6. 创建拼写纠错功能"></outline>
+<outline text="7. 使用聚合函数来优化查询结果"></outline>
+</outline>
+<outline text="更正用户拼写错误"><outline text="suggester" _note="这个参数可以拼接在query后面,在请求的时候回提供拼写修正"><outline text="completion suggester"></outline>
+<outline text="phrase suggester"></outline>
+<outline text="term suggester"></outline>
+</outline>
+</outline>
+</outline>
+<outline text="第五章" _note="分布式做阴架构&#10;&#10;本站主要从整体上介绍了分布式索引架构的部署,以分片/副本/别名三个概念,在实际生产中,我们应该如何利用分片,副本以及别名三种属性.&#10;&#10;本章内容还介绍了如何使用路由机制"><outline text="选择适合的分片副本数"><outline text="分片的使用"></outline>
+<outline text="副本"></outline>
+</outline>
+<outline text="路由" _note="路由指的是, 在数据存储或者索引的时候我们根据一定的routing规则,来索引数据或者是查询数据"></outline>
+<outline text="别名" _note="通常给索引指定别名,可以隐藏索引的相关信息,并且方便索引的更改.&#10;&#10;同时别名还可以分别指定索引和查询规则:&#10;search_routing&#10;&#10;index_routing&#10;"></outline>
+<outline text="调整默认分片的行为" _note="Es本身就有自己默认的分片规则,当然我们在部署服务的时候也可以自己指定相关的分片规则"></outline>
+</outline>
+</outline>
+</body>
+</opml>
