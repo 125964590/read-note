@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+<head>
+<title>Design Patterns</title>
+</head>
+<body>
+<outline text="在代码中找到书里的模式"></outline>
+<outline text="Design Patterns" _note="模式是在某种情境下针对某问题的某种解决方案"><outline text="创建类型模式"><outline text="Factory Pattern" _note="Create Object Factory"><outline text="Base-Factory" _note="User switch create Object.&#10;将创建对象的代码提取出来,并且使用静态的方式来提供"></outline>
+<outline text="Factory-Meathod" _note="定义一个用于创建对新建的接口,让子类决定实例化那个一个类.工厂方法是一个类的实例化延迟到其子类"></outline>
+<outline text="Abstract-Factory" _note="提供一个借口,用于创建相关活依赖对象的家族,而不需要明确指定具体类."></outline>
+</outline>
+<outline text="Prototype Pattern" _note="用原型指定创建对象的种类,并且通过拷贝这些原型创建新的对象."></outline>
+<outline text="Singleton Pattern" _note="确保一个类只有一个示例,并提供一个人全局访问的点"><outline text="线程安全的单例"><outline text="饿汉模式" _note="由于饿汉模式是在JVM初始化的时候就将对象创建了出来,所以在使用的时候无须担心出现多线程的问题."></outline>
+<outline text="懒汉模式"><outline text="双重检查加锁" _note="首先检查示例是否创建,如果没有创建将创建的代码逻辑添加同步锁,这样只有在第一次创建的时候才会使用同步锁&#10;&#10;public class lol {&#10;    private volatile static UserDetailsServer testInstance;&#10;&#10;    public static UserDetailsServer getInstance() {&#10;        if (testInstance == null) {&#10;            synchronized (lol.class) {&#10;                if (testInstance == null) {&#10;                    testInstance = new UserDetailsServer(null, null);&#10;                }&#10;            }&#10;        }&#10;        return testInstance;&#10;    }&#10;}"></outline>
+</outline>
+</outline>
+</outline>
+</outline>
+<outline text="行为类型模式"><outline text="Strategy Pattern" _note="Definition algorithm:&#10;定义了算法族,可以将他们封装起来,让他们之间可以相互替换,此模式让算法的变化独立于使用算法的客户."></outline>
+<outline text="Template Method" _note="在一个方法中定义一个算法的骨架,而将一些步骤延迟到子类中.模板方法使得子类可以在不改变算法结构的情况下重新定义算法中的某些步骤.&#10;&#10;&#10;为我们封装代码提供了一个重要的技巧"><outline text="hook" _note="可以通过定义一个钩子来控制我们的模板方法,让他变得更聪明,将更多地功能暴露给需要实现该方法的用户"></outline>
+<outline text="example"><outline text="Array.Sort"></outline>
+</outline>
+</outline>
+<outline text="Iterator Pattern" _note="提供一种方法顺序访问一个聚合对象中的各个元素,而又不暴露其内部的表示.&#10;&#10;&#10;迭代器模式能让我们游走于聚合内的每一个元素,而又不暴露其内部的表示.&#10;&#10;吧友走的任务凡在迭代器上,而不是聚合上.这样简化了聚合的接口和实现,也让责任各得其所."><outline text="note" _note="1. Java本身提供的iterator非常棒,我们在使用的时候也应该使用这个,但是这个迭代器还包含一个remove方法,这个方法他默认会抛出一个异常&#10;&#10;2. 如果在多线程的情况下使用iterator还需要注意线程安全的问题"></outline>
+<outline text="work" _note="对于聚合管理对象,如果使用迭代器可以更加专一的做自己的事情,将遍历数据的工作交给迭代器来完成&#10;&#10;其实在实际的生产过程中这个过程java的框架已经帮我们封装好了,我们在工作中可以很轻松的使用集合框架"></outline>
+</outline>
+<outline text="State Pattern" _note="允许对象在内部状态改变时改变他的行为,对象看起来好像修改了他的类."><outline text="trun" _note="状态模式和策略模式类似,同样都是定义一套方法族并且支持运行时的多态但是主要区别在于状态模式,会维护自己当前的状态,并且在完成方法调用后修改自己的状态."></outline>
+<outline text="extend" _note="状态的判断通过不同的类去表示,一种状态代表着一种类"></outline>
+</outline>
+<outline text="Proxy Pattern" _note="为另一个对象提供一个替身或占位符以控制这个对象的访问&#10;&#10;&#10;"><outline text="kind"></outline>
+<outline text="java"><outline text="动态代理"></outline>
+</outline>
+</outline>
+<outline text="Decorator Pattern" _note="动态的给一个对象添加一些额外的职责,就增加功能来说,Decorator模式相比生成子类更为灵活.&#10;&#10;"></outline>
+</outline>
+<outline text="结构类型模式"><outline text="Adapter Pattern" _note="将一个类的接口,转换成客户期望的另一个接口.适配器让原本接口不兼容的类可以合作无间."></outline>
+<outline text="Command Pattern" _note="讲一个请求封装为一个对象,从而使你可用不同的请求对客户进行参数化;排队或记录请求日志,以及支持可撤销操作."></outline>
+<outline text="Facade Patterm" _note="提供了一个统一的接口,用来访问子系统中的一群接口.外观定义了一个高层接口,让子系统更容易使用."><outline text="intention" _note="1. 提供一个简单的接口,好让一个子系统更好的使用"></outline>
+</outline>
+<outline text="Composite Pattern" _note="允许你将对象组合成熟型结构来表现”整体/部分:层次结构.组合能让客户以一致的方式处理个别对象以及对象组合."><outline text="迭代器/递归"></outline>
+<outline text="将有子父级关系的对象管理起来" _note="在使用组合模式的时候有很多设计上的折中调整,所以在使用的时候需要设计好"></outline>
+</outline>
+</outline>
+<outline text="组合模式" _note="模式通常被一起使用,并被组合在同一个设计解决方案中.&#10;&#10;复合模式在一个解决方案中结合两个或多个模式,以解决一般或重复发生的问题."><outline text="MVC" _note="MVC是复合模式,结合了观察者模式,策略模式和组合模式&#10;&#10;"></outline>
+</outline>
+<outline text="定义设计模式" _note="如果你发现自己处于某个情境下,面对这所欲达到的目标被一群约束影响着的问题,然而,你能够应用某个设计,克服这些约束并达到该目标,及那你领向某个决绝方案"><outline text="概念"><outline text="情境" _note="就是应用某个模式的情况"></outline>
+<outline text="问题" _note="就是你想在某情境下达到的目标"></outline>
+<outline text="解决方案" _note="就是你所追求的:一个通用的设计,用来解决约束,达到目标"></outline>
+</outline>
+<outline text="模式分类"><outline text="创建型"></outline>
+<outline text="结构型"></outline>
+<outline text="行为型"></outline>
+<outline text="类或对象"></outline>
+</outline>
+<outline text="秘诀"><outline text="用模式思考"></outline>
+<outline text="保持简单"></outline>
+<outline text="知道何时需要模式"></outline>
+<outline text="重构需要模式"></outline>
+<outline text="拿掉不需要的"></outline>
+<outline text="如果不需要就别做"></outline>
+</outline>
+</outline>
+<outline text="Design Philosophy"><outline text="设计原则"><outline text="封装变化"></outline>
+<outline text="多用组合少用继承"></outline>
+<outline text="单一职责" _note="就一个类而言,应该仅有一个引起它变化的原因."></outline>
+<outline text="依赖倒置" _note="在编程的过程中,要依赖抽象,不要依赖具体的类.&#10;(Dependench Inversion Principle)"></outline>
+<outline text="最少知识原则" _note="减少对象之间的交互,只留下几个”密友”&#10;&#10;只和你的密友谈话"></outline>
+<outline text="好莱坞原则" _note="别调用我们,我们会调用你."></outline>
+<outline text="迪米特法则" _note="如果两个类不必彼此直接通信,那么这两个类就不应当发生直接的相互作用.如果其中一个类需要调用另一个类的某一个方法的话,可以通过第三者转发这个调用."></outline>
+<outline text="类只有一个改变的理由"></outline>
+</outline>
+<outline text="基础"><outline text="抽象"></outline>
+<outline text="封装"></outline>
+<outline text="继承"></outline>
+<outline text="多态"></outline>
+</outline>
+</outline>
+<outline text="UML"><outline text="Extend" _note="继承关系通常体现为一个方法需要继承另一个方法的属性,或者是将其当做父类.&#10;&#10;使用空心箭头表示&#10;&#10;&#10;在代码中的体现通常为实现一个方法,或者是继承一个方法&#10;&#10;&#10;class Eat extends Animal {&#10;&#10;    public Eat(Eat eat) {&#10;        super(eat);&#10;    }&#10;    &#10;}"></outline>
+<outline text="Composition" _note="组合关系标识一种抢的拥有,体现了严格的部分和整体关系,部分和整体的生命周期一样.&#10;&#10;在代码中通常体现为在一个类中同一时间创建的对象&#10;&#10;使用实心菱形和箭头表示&#10;&#10;&#10;class Bird {&#10;	private Wing wing;&#10;	public Bird () {&#10;		wing = new Wing();&#10;	}&#10;}"></outline>
+<outline text="Dependency" _note="依赖关系,标识一个方法的调用需要依赖其他的属性或者是方法.&#10;&#10;使用箭头加虚线表示&#10;&#10;在代码中的体现通常是将需要依赖的属性作为参数传递到需要的方法中&#10;&#10;public class Animal {&#10;&#10;    public Animal(Eat eat) {&#10;        &#10;    }&#10;&#10;}"></outline>
+<outline text="Aggregation" _note="表示一种弱的拥有关系,体现的是A对象可以包含B对象,但B对象不是A对象的一部分&#10;&#10;使用户空心菱形和箭头表示&#10;&#10;在代码中的体现通常表现为bean中的嵌套参数&#10;&#10;&#10;&#10;public class Animal {&#10;&#10;    Dog[] dogs;&#10;&#10;}"></outline>
+<outline text="Association" _note="一个类在有些情况需要使用到另一个类这种相互引用的关系叫做关联关系&#10;&#10;使用箭头加实线表示&#10;&#10;在代码中通常体现为一种引用关系&#10;&#10;&#10;&#10;public class Animal {&#10;&#10;    Play play;&#10;&#10;}"></outline>
+</outline>
+</outline>
+</body>
+</opml>
